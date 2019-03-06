@@ -10,12 +10,58 @@ import UIKit
 
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var total: UILabel!
+    @IBOutlet weak var percentageLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var percentageButton: UIButton!
+    @IBOutlet weak var amountButton: UIButton!
+    
+    var percentage = ""
+    var amount = ""
+    var isPercentageSelected = true
+    var isAmountSelected = false
+    var canClear = true
+    var isOff = true
+    var isOf = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+       
+        
     }
+    
+    
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        
+        
+    }
+    
+    
+    @IBAction func percentageOrAmount(_ sender: UIButton) {
+        
+        switch sender {
+        case percentageButton:
+            isPercentageSelected = true
+            isAmountSelected = false
+            return
+            
+        case amountButton:
+            isAmountSelected = true
+            isPercentageSelected = false
+            return
+            
+        default:
+            print("no button selected")
+            return
+        }
+        
+    }
+    
 
+    @IBAction func ofOrOff(_ sender: UISwitch) {
+    }
     
 
 }
@@ -48,6 +94,15 @@ extension UIView {
             layer.borderColor = newValue?.cgColor
         }
     }
+}
+
+extension UIButton {
+    
+    func moveTitle(horizontal hOffset: CGFloat, vertical vOffset: CGFloat) {
+        self.titleEdgeInsets.left += hOffset
+        self.titleEdgeInsets.top += vOffset
+    }
+    
 }
 
 
